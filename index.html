@@ -1,84 +1,242 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ReelDown - Download Instagram Reels Free</title>
-  <meta name="description" content="Download Instagram Reels, Videos and Photos for free. Just paste the link and download instantly."/>
-  <meta name="keywords" content="download instagram reels, save instagram video, ig reel downloader, instagram video saver"/>
-  <link rel="stylesheet" href="style.css"/>
+  <title>ReelSave - Download Instagram Reels Free</title>
+  <meta name="description" content="Download Instagram Reels and Videos free. Paste link and save instantly."/>
+  <meta name="keywords" content="download instagram reels, save instagram video, reel downloader"/>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Segoe UI',sans-serif;background:#0a0a0a;color:#fff;min-height:100vh}
+    a{color:inherit;text-decoration:none}
+    .ad{background:#111;border:1px dashed #222;border-radius:8px;padding:16px;text-align:center;color:#333;font-size:11px;width:100%;margin:12px 0;min-height:60px;display:flex;align-items:center;justify-content:center}
+    header{text-align:center;padding:32px 16px 16px}
+    header h1{font-size:2.2rem;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    header p{color:#666;margin-top:8px;font-size:.95rem}
+    main{max-width:620px;margin:0 auto;padding:0 16px 40px}
+    .search{display:flex;gap:8px;margin:24px 0;flex-wrap:wrap}
+    .search input{flex:1;min-width:180px;padding:14px 16px;border-radius:10px;border:2px solid #222;background:#161616;color:#fff;font-size:1rem;outline:none;transition:border .2s}
+    .search input:focus{border-color:#dc2743}
+    .search button{padding:14px 24px;background:linear-gradient(135deg,#f09433,#dc2743,#bc1888);color:#fff;border:none;border-radius:10px;font-size:1rem;font-weight:700;cursor:pointer;white-space:nowrap;transition:opacity .2s}
+    .search button:hover{opacity:.85}
+    .howto{background:#111;border-left:3px solid #dc2743;border-radius:8px;padding:16px 20px;margin-bottom:20px;font-size:.9rem;color:#aaa;line-height:2}
+    .howto strong{color:#f09433}
+    .loading{text-align:center;color:#aaa;padding:20px;display:none}
+    .spinner{width:36px;height:36px;border:3px solid #222;border-top-color:#dc2743;border-radius:50%;animation:spin .7s linear infinite;margin:0 auto 12px}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .result{background:#111;border-radius:12px;padding:24px;text-align:center;display:none;border:1px solid #1e1e1e}
+    .result .info{color:#aaa;font-size:.85rem;margin-bottom:16px}
+    .dl-btn{display:inline-block;padding:13px 32px;background:linear-gradient(135deg,#f09433,#dc2743,#bc1888);color:#fff;border-radius:10px;font-weight:700;font-size:1rem;cursor:pointer;border:none;transition:opacity .2s;text-decoration:none}
+    .dl-btn:hover{opacity:.85}
+    .dl-note{color:#444;font-size:.75rem;margin-top:12px}
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;z-index:9999}
+    .modal.show{display:flex}
+    .modal-box{background:#111;border-radius:16px;padding:32px;text-align:center;max-width:400px;width:92%;border:1px solid #222}
+    .modal-box h2{margin-bottom:8px;font-size:1.3rem}
+    .modal-box p{color:#666;font-size:.9rem;margin-bottom:20px}
+    .ad-slot{background:#0a0a0a;border:1px dashed #222;border-radius:8px;height:110px;display:flex;align-items:center;justify-content:center;color:#333;font-size:11px;margin-bottom:20px}
+    .timer{color:#f09433;font-size:1rem;margin-bottom:16px}
+    .unlock-btn{padding:13px 30px;background:linear-gradient(135deg,#f09433,#dc2743);color:#fff;border:none;border-radius:10px;font-size:1rem;font-weight:700;cursor:pointer;display:none}
+    footer{text-align:center;padding:30px 16px;color:#333;font-size:.75rem;line-height:2}
+  </style>
 </head>
 <body>
 
-  <!-- TOP BANNER AD -->
-  <div class="ad-banner top-ad">
-    <p>Advertisement</p>
-    <!-- PASTE MONETAG TOP BANNER CODE HERE LATER -->
+  <!-- AD 1: TOP BANNER -->
+  <div class="ad">
+    <!-- MONETAG TOP BANNER CODE HERE -->
+    Advertisement
   </div>
 
   <header>
-    <h1>⬇️ ReelDown</h1>
-    <p>Download Instagram Reels, Videos & Photos — Free & Fast</p>
+    <h1>⬇️ ReelSave</h1>
+    <p>Download Instagram Reels & Videos — Free & Instant</p>
   </header>
 
   <main>
 
-    <div class="how-to">
-      <h2>How to use:</h2>
-      <ol>
-        <li>Open Instagram and find the Reel you want</li>
-        <li>Tap the 3 dots (...) on the reel</li>
-        <li>Tap <strong>Copy Link</strong></li>
-        <li>Paste the link below and click Download</li>
-      </ol>
+    <div class="howto">
+      <strong>How to use:</strong><br/>
+      1. Open Instagram → find your Reel<br/>
+      2. Tap ••• → <strong>Copy Link</strong><br/>
+      3. Paste below → tap <strong>Download</strong>
     </div>
 
-    <div class="input-box">
-      <input type="text" id="urlInput" placeholder="Paste Instagram Reel link here..."/>
+    <!-- AD 2: BELOW HOW-TO -->
+    <div class="ad">
+      <!-- MONETAG BANNER CODE HERE -->
+      Advertisement
+    </div>
+
+    <div class="search">
+      <input type="text" id="urlInput" placeholder="Paste Instagram link here..."/>
       <button onclick="handleDownload()">Download</button>
     </div>
 
-    <!-- MIDDLE AD -->
-    <div class="ad-banner mid-ad">
-      <p>Advertisement</p>
-      <!-- PASTE MONETAG MIDDLE AD CODE HERE LATER -->
+    <!-- AD 3: BELOW INPUT -->
+    <div class="ad">
+      <!-- MONETAG BANNER CODE HERE -->
+      Advertisement
     </div>
 
-    <div id="loadingMsg" class="loading hidden">
-      ⏳ Fetching your video, please wait...
+    <div class="loading" id="loading">
+      <div class="spinner"></div>
+      Fetching your video...
     </div>
 
-    <div id="result" class="result-box hidden"></div>
+    <div class="result" id="result">
+      <div class="info" id="resultInfo"></div>
+      <a class="dl-btn" id="dlBtn">⬇️ Download Video</a>
+      <p class="dl-note">Tap the button above to download directly to your phone</p>
+    </div>
 
-    <!-- BOTTOM AD (shows after result) -->
-    <div class="ad-banner bottom-ad hidden" id="bottomAd">
-      <p>Advertisement</p>
-      <!-- PASTE MONETAG BOTTOM AD CODE HERE LATER -->
+    <!-- AD 4: BELOW RESULT -->
+    <div class="ad" id="bottomAd" style="display:none">
+      <!-- MONETAG BANNER CODE HERE -->
+      Advertisement
     </div>
 
   </main>
 
-  <!-- REWARDED VIDEO MODAL -->
-  <div id="rewardModal" class="modal hidden">
-    <div class="modal-content">
+  <!-- REWARDED AD MODAL -->
+  <div class="modal" id="modal">
+    <div class="modal-box">
       <h2>🎬 Almost there!</h2>
-      <p>Watch a short ad to unlock your download for free.</p>
-      <div class="ad-placeholder">
-        <!-- PASTE MONETAG REWARDED VIDEO CODE HERE LATER -->
-        <p style="color:#555">Ad playing here</p>
+      <p>Watch a short ad to unlock your free download</p>
+      <div class="ad-slot">
+        <!-- MONETAG REWARDED VIDEO CODE HERE -->
+        Ad playing...
       </div>
-      <div id="adTimer">Please wait... <span id="countdown">15</span> seconds</div>
-      <button id="skipBtn" class="hidden" onclick="unlockDownload()">
-        ✅ Get My Download
+      <div class="timer" id="timer">Please wait <span id="countdown">15</span>s</div>
+      <button class="unlock-btn" id="unlockBtn" onclick="unlockDownload()">
+        ✅ Get Download Link
       </button>
     </div>
   </div>
 
   <footer>
-    <p>ReelDown is not affiliated with Instagram or Meta. For personal use only.</p>
-    <p style="margin-top:8px"><a href="#" style="color:#555">Privacy Policy</a> · <a href="#" style="color:#555">Contact</a></p>
+    ReelSave is not affiliated with Instagram or Meta. For personal use only.<br/>
+    <a href="#" style="color:#333">Privacy Policy</a> · <a href="#" style="color:#333">Contact</a>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    const API_KEY = "28a86e13demsh1aab9c3c2f7b22bp11dd2djsn63c38bca638e";
+    let finalUrl = null;
+
+    async function handleDownload() {
+      const url = document.getElementById("urlInput").value.trim();
+      const loading = document.getElementById("loading");
+      const result = document.getElementById("result");
+      const bottomAd = document.getElementById("bottomAd");
+
+      result.style.display = "none";
+      bottomAd.style.display = "none";
+
+      if (!url) { alert("Please paste an Instagram link!"); return; }
+      if (!url.includes("instagram.com")) { alert("Please enter a valid Instagram link."); return; }
+
+      loading.style.display = "block";
+
+      try {
+        const res = await fetch(
+          `https://instagram-downloader-download-instagram-stories-videos4.p.rapidapi.com/convert?url=${encodeURIComponent(url)}`,
+          {
+            method: "GET",
+            headers: {
+              "x-rapidapi-key": API_KEY,
+              "x-rapidapi-host": "instagram-downloader-download-instagram-stories-videos4.p.rapidapi.com",
+              "Content-Type": "application/json"
+            }
+          }
+        );
+
+        const data = await res.json();
+        loading.style.display = "none";
+        console.log("Response:", data);
+
+        const videoUrl =
+          data?.video ||
+          data?.url ||
+          data?.download_url ||
+          data?.result?.url ||
+          data?.media?.[0]?.url ||
+          data?.data?.video_url ||
+          data?.videoUrl ||
+          null;
+
+        if (videoUrl) {
+          finalUrl = videoUrl;
+          showAd();
+        } else {
+          alert("❌ Could not fetch video. Make sure the post is public.\n\nDebug: " + JSON.stringify(data).slice(0, 200));
+        }
+
+      } catch(err) {
+        loading.style.display = "none";
+        alert("❌ Error: " + err.message);
+      }
+    }
+
+    function showAd() {
+      const modal = document.getElementById("modal");
+      const unlockBtn = document.getElementById("unlockBtn");
+      const countdown = document.getElementById("countdown");
+      const timer = document.getElementById("timer");
+
+      modal.classList.add("show");
+      unlockBtn.style.display = "none";
+      timer.style.display = "block";
+
+      let s = 15;
+      countdown.textContent = s;
+
+      const t = setInterval(() => {
+        s--;
+        countdown.textContent = s;
+        if (s <= 0) {
+          clearInterval(t);
+          timer.textContent = "✅ Done!";
+          unlockBtn.style.display = "inline-block";
+        }
+      }, 1000);
+    }
+
+    function unlockDownload() {
+      document.getElementById("modal").classList.remove("show");
+      const result = document.getElementById("result");
+      const bottomAd = document.getElementById("bottomAd");
+
+      document.getElementById("resultInfo").textContent = "✅ Your video is ready!";
+
+      // Fetch as blob for proper mobile download
+      fetch(finalUrl)
+        .then(res => res.blob())
+        .then(blob => {
+          const blobUrl = URL.createObjectURL(blob);
+          const dlBtn = document.getElementById("dlBtn");
+          dlBtn.href = blobUrl;
+          dlBtn.download = "reel.mp4";
+          dlBtn.textContent = "⬇️ Download Video";
+        })
+        .catch(() => {
+          // Fallback to direct link
+          const dlBtn = document.getElementById("dlBtn");
+          dlBtn.href = finalUrl;
+          dlBtn.download = "reel.mp4";
+        });
+
+      result.style.display = "block";
+      bottomAd.style.display = "flex";
+      result.scrollIntoView({ behavior: "smooth" });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("urlInput").addEventListener("keydown", e => {
+        if (e.key === "Enter") handleDownload();
+      });
+    });
+  </script>
+
 </body>
 </html>
