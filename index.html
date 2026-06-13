@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ReelDown - Download Instagram Reels Free</title>
+  <meta name="description" content="Download Instagram Reels, Videos and Photos for free. Just paste the link and download instantly."/>
+  <meta name="keywords" content="download instagram reels, save instagram video, ig reel downloader, instagram video saver"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <!-- TOP BANNER AD -->
+  <div class="ad-banner top-ad">
+    <p>Advertisement</p>
+    <!-- PASTE MONETAG TOP BANNER CODE HERE LATER -->
+  </div>
+
+  <header>
+    <h1>⬇️ ReelDown</h1>
+    <p>Download Instagram Reels, Videos & Photos — Free & Fast</p>
+  </header>
+
+  <main>
+
+    <div class="how-to">
+      <h2>How to use:</h2>
+      <ol>
+        <li>Open Instagram and find the Reel you want</li>
+        <li>Tap the 3 dots (...) on the reel</li>
+        <li>Tap <strong>Copy Link</strong></li>
+        <li>Paste the link below and click Download</li>
+      </ol>
+    </div>
+
+    <div class="input-box">
+      <input type="text" id="urlInput" placeholder="Paste Instagram Reel link here..."/>
+      <button onclick="handleDownload()">Download</button>
+    </div>
+
+    <!-- MIDDLE AD -->
+    <div class="ad-banner mid-ad">
+      <p>Advertisement</p>
+      <!-- PASTE MONETAG MIDDLE AD CODE HERE LATER -->
+    </div>
+
+    <div id="loadingMsg" class="loading hidden">
+      ⏳ Fetching your video, please wait...
+    </div>
+
+    <div id="result" class="result-box hidden"></div>
+
+    <!-- BOTTOM AD (shows after result) -->
+    <div class="ad-banner bottom-ad hidden" id="bottomAd">
+      <p>Advertisement</p>
+      <!-- PASTE MONETAG BOTTOM AD CODE HERE LATER -->
+    </div>
+
+  </main>
+
+  <!-- REWARDED VIDEO MODAL -->
+  <div id="rewardModal" class="modal hidden">
+    <div class="modal-content">
+      <h2>🎬 Almost there!</h2>
+      <p>Watch a short ad to unlock your download for free.</p>
+      <div class="ad-placeholder">
+        <!-- PASTE MONETAG REWARDED VIDEO CODE HERE LATER -->
+        <p style="color:#555">Ad playing here</p>
+      </div>
+      <div id="adTimer">Please wait... <span id="countdown">15</span> seconds</div>
+      <button id="skipBtn" class="hidden" onclick="unlockDownload()">
+        ✅ Get My Download
+      </button>
+    </div>
+  </div>
+
+  <footer>
+    <p>ReelDown is not affiliated with Instagram or Meta. For personal use only.</p>
+    <p style="margin-top:8px"><a href="#" style="color:#555">Privacy Policy</a> · <a href="#" style="color:#555">Contact</a></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

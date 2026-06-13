@@ -1,0 +1,266 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #0f0f0f;
+  color: #ffffff;
+  min-height: 100vh;
+}
+
+/* ---- HEADER ---- */
+header {
+  text-align: center;
+  padding: 40px 20px 10px;
+}
+
+header h1 {
+  font-size: 2.8rem;
+  background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+header p {
+  color: #aaaaaa;
+  margin-top: 10px;
+  font-size: 1.05rem;
+}
+
+/* ---- MAIN ---- */
+main {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 20px 16px;
+}
+
+/* ---- HOW TO ---- */
+.how-to {
+  background: #1a1a1a;
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin: 24px 0;
+  border-left: 4px solid #dc2743;
+}
+
+.how-to h2 {
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+  color: #f09433;
+}
+
+.how-to ol {
+  padding-left: 20px;
+  color: #cccccc;
+  line-height: 2;
+}
+
+/* ---- INPUT BOX ---- */
+.input-box {
+  display: flex;
+  gap: 10px;
+  margin: 24px 0;
+  flex-wrap: wrap;
+}
+
+.input-box input {
+  flex: 1;
+  min-width: 200px;
+  padding: 15px 18px;
+  border-radius: 10px;
+  border: 2px solid #2a2a2a;
+  background: #1a1a1a;
+  color: #ffffff;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.input-box input:focus {
+  border-color: #dc2743;
+}
+
+.input-box button {
+  padding: 15px 28px;
+  background: linear-gradient(135deg, #f09433, #dc2743, #bc1888);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.1s, opacity 0.2s;
+  white-space: nowrap;
+}
+
+.input-box button:hover {
+  opacity: 0.88;
+  transform: scale(1.02);
+}
+
+.input-box button:active {
+  transform: scale(0.98);
+}
+
+/* ---- ADS ---- */
+.ad-banner {
+  background: #161616;
+  border: 1px dashed #2a2a2a;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  color: #444444;
+  margin: 20px 0;
+  font-size: 0.8rem;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---- LOADING ---- */
+.loading {
+  text-align: center;
+  color: #aaaaaa;
+  padding: 20px;
+  font-size: 1rem;
+}
+
+/* ---- RESULT BOX ---- */
+.result-box {
+  background: #1a1a1a;
+  border-radius: 14px;
+  padding: 24px;
+  margin-top: 20px;
+  text-align: center;
+  border: 1px solid #2a2a2a;
+}
+
+.result-box video {
+  width: 100%;
+  max-height: 400px;
+  border-radius: 10px;
+  margin-bottom: 18px;
+  background: #000;
+}
+
+.result-box .download-btn {
+  display: inline-block;
+  padding: 14px 36px;
+  background: linear-gradient(135deg, #f09433, #dc2743, #bc1888);
+  color: white;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: opacity 0.2s;
+}
+
+.result-box .download-btn:hover {
+  opacity: 0.88;
+}
+
+/* ---- HIDDEN ---- */
+.hidden {
+  display: none !important;
+}
+
+/* ---- MODAL ---- */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal-content {
+  background: #1a1a1a;
+  border-radius: 18px;
+  padding: 36px 32px;
+  text-align: center;
+  max-width: 420px;
+  width: 92%;
+  border: 1px solid #2a2a2a;
+}
+
+.modal-content h2 {
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+}
+
+.modal-content p {
+  color: #aaaaaa;
+  margin-bottom: 22px;
+  font-size: 0.95rem;
+}
+
+.ad-placeholder {
+  background: #111;
+  border-radius: 10px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  border: 1px dashed #333;
+}
+
+#adTimer {
+  font-size: 1rem;
+  color: #f09433;
+  margin-bottom: 18px;
+}
+
+#skipBtn {
+  padding: 13px 32px;
+  background: linear-gradient(135deg, #f09433, #dc2743);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+#skipBtn:hover {
+  opacity: 0.88;
+}
+
+/* ---- FOOTER ---- */
+footer {
+  text-align: center;
+  padding: 50px 20px 30px;
+  color: #444444;
+  font-size: 0.8rem;
+  line-height: 1.8;
+}
+
+footer a {
+  color: #555555;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #888;
+}
+
+/* ---- MOBILE ---- */
+@media (max-width: 500px) {
+  header h1 {
+    font-size: 2rem;
+  }
+  .input-box {
+    flex-direction: column;
+  }
+  .input-box button {
+    width: 100%;
+  }
+}
