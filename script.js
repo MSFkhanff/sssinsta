@@ -1,27 +1,23 @@
 // ==============================
-// PASTE YOUR RAPIDAPI KEY BELOW
+// YOUR RAPIDAPI KEY
 // ==============================
 const RAPIDAPI_KEY = "28a86e13demsh1aab9c3c2f7b22bp11dd2djsn63c38bca638e";
 
-// This stores the video URL temporarily
 let pendingDownloadUrl = null;
 
 // ==============================
-// MAIN FUNCTION - runs when user clicks Download
+// MAIN FUNCTION
 // ==============================
 async function handleDownload() {
 
-  // Get what the user typed in the input box
   const url = document.getElementById("urlInput").value.trim();
   const resultBox = document.getElementById("result");
   const loadingMsg = document.getElementById("loadingMsg");
   const bottomAd = document.getElementById("bottomAd");
 
-  // Hide previous results
   resultBox.classList.add("hidden");
   bottomAd.classList.add("hidden");
 
-  // Basic checks
   if (!url) {
     alert("⚠️ Please paste an Instagram link first!");
     return;
@@ -32,36 +28,50 @@ async function handleDownload() {
     return;
   }
 
-  // Show loading message
   loadingMsg.classList.remove("hidden");
 
   try {
-    // Call the RapidAPI Instagram Downloader
+    // CORRECT API ENDPOINT FOR YOUR API
     const response = await fetch(
-      `https://instagram-downloader-download-instagram-videos-stories1.p.rapidapi.com/get-info-rapidapi?url=${encodeURIComponent(url)}`,
+      `https://instagram-downloader-download-instagram-stories-videos4.p.rapidapi.com/convert?url=${encodeURIComponent(url)}`,
       {
         method: "GET",
         headers: {
-          "X-RapidAPI-Key": RAPIDAPI_KEY,
-          "X-RapidAPI-Host": "instagram-downloader-download-instagram-videos-stories1.p.rapidapi.com"
+          "x-rapidapi-key": RAPIDAPI_KEY,
+          "x-rapidapi-host": "instagram-downloader-download-instagram-stories-videos4.p.rapidapi.com",
+          "Content-Type": "application/json"
         }
       }
     );
 
     const data = await response.json();
 
-    // Hide loading
     loadingMsg.classList.add("hidden");
 
-    // Check if we got a video URL back
-    if (data && data.video) {
-      pendingDownloadUrl = data.video;
-      showRewardedAd(); // Show the ad modal before giving download
+    // Log to see what the API returns
+    console.log("API Response:", data);
+
+    // Try to find the video URL in the response
+    const videoUrl =
+      data?.video ||
+      data?.url ||
+      data?.download_url ||
+      data?.media?.[0]?.url ||
+      data?.result?.video ||
+      data?.data?.video_url ||
+      null;
+
+    if (videoUrl) {
+      pendingDownloadUrl = videoUrl;
+      showRewardedAd();
     } else {
       resultBox.innerHTML = `
         <p style="color:#ff6b6b; font-size:1rem;">
           ❌ Could not fetch video.<br/>
           Make sure the Instagram post is <strong>public</strong> and the link is correct.
+        </p>
+        <p style="color:#555; font-size:0.8rem; margin-top:10px;">
+          Debug info: ${JSON.stringify(data)}
         </p>
       `;
       resultBox.classList.remove("hidden");
@@ -69,18 +79,14 @@ async function handleDownload() {
 
   } catch (err) {
     loadingMsg.classList.add("hidden");
-    resultBox.innerHTML = `
-      <p style="color:#ff6b6b;">
-        ❌ Something went wrong. Please try again.
-      </p>
-    `;
+    resultBox.innerHTML = `<p style="color:#ff6b6b;">❌ Something went wrong. Please try again.</p>`;
     resultBox.classList.remove("hidden");
     console.error("API Error:", err);
   }
 }
 
 // ==============================
-// SHOW REWARDED AD MODAL
+// REWARDED AD MODAL
 // ==============================
 function showRewardedAd() {
   const modal = document.getElementById("rewardModal");
@@ -88,39 +94,34 @@ function showRewardedAd() {
   const countdown = document.getElementById("countdown");
   const adTimer = document.getElementById("adTimer");
 
-  // Show modal
   modal.classList.remove("hidden");
   skipBtn.classList.add("hidden");
   adTimer.style.display = "block";
 
-  // Countdown from 15 seconds
   let seconds = 15;
   countdown.textContent = seconds;
 
   const timer = setInterval(() => {
     seconds--;
     countdown.textContent = seconds;
-
     if (seconds <= 0) {
       clearInterval(timer);
       adTimer.textContent = "✅ Ad finished!";
-      skipBtn.classList.remove("hidden"); // Show the download button
+      skipBtn.classList.remove("hidden");
     }
   }, 1000);
 }
 
 // ==============================
-// UNLOCK DOWNLOAD AFTER AD
+// UNLOCK DOWNLOAD
 // ==============================
 function unlockDownload() {
   const modal = document.getElementById("rewardModal");
   const resultBox = document.getElementById("result");
   const bottomAd = document.getElementById("bottomAd");
 
-  // Hide modal
   modal.classList.add("hidden");
 
-  // Show video preview and download button
   resultBox.innerHTML = `
     <p style="color:#aaa; margin-bottom:14px;">✅ Your video is ready!</p>
     <video controls src="${pendingDownloadUrl}"></video>
@@ -129,24 +130,20 @@ function unlockDownload() {
       ⬇️ Download Video
     </a>
     <p style="color:#555; font-size:0.8rem; margin-top:14px;">
-      If the download doesn't start, right click the video → Save Video As
+      If download doesn't start, right click the video → Save Video As
     </p>
   `;
 
   resultBox.classList.remove("hidden");
   bottomAd.classList.remove("hidden");
-
-  // Scroll down to result
   resultBox.scrollIntoView({ behavior: "smooth" });
 }
 
 // ==============================
-// ALLOW PRESSING ENTER KEY TO DOWNLOAD
+// ENTER KEY SUPPORT
 // ==============================
 document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("urlInput").addEventListener("keydown", (e) => {
-    if (e.key === "Enter") {
-      handleDownload();
-    }
+    if (e.key === "Enter") handleDownload();
   });
 });
